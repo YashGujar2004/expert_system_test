@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="myCss.css">
     <script src="myScript.js" defer></script>
 </head>
+
 <body>
     <h1>APPRAISAL AND 360° FEEDBACK FORM</h1>
     <div class="section-header">SECTION A</div>
@@ -53,30 +55,30 @@
             <td><input type="text" name="subjectName1" required></td>
             <td><input type="number" name="scheduledClasses1" required></td>
             <td><input type="number" name="heldClasses1" required></td>
-            <td class ="pointsEarned1"></td>
+            <td class="pointsEarned1"></td>
             <td><input type="text" name="documentIndex1"></td>
         </tr>
         <tr>
             <td>2</td>
             <td><input type="text" name="semester2" required></td>
-            <td><input type="text" name="subjectCode2"required></td>
-            <td><input type="text" name="subjectName2"required></td>
-            <td><input type="number" name="scheduledClasses2"required></td>
-            <td><input type="number" name="heldClasses2"required></td>
-            <td id = "pointsEarned2" ></td>
+            <td><input type="text" name="subjectCode2" required></td>
+            <td><input type="text" name="subjectName2" required></td>
+            <td><input type="number" name="scheduledClasses2" required></td>
+            <td><input type="number" name="heldClasses2" required></td>
+            <td id="pointsEarned2"></td>
             <td><input type="text" name="documentIndex2"></td>
         </tr>
     </table>
 
     <div class="form-group">
         <label for="teachingAverage">Average Weightage out of 20 Points:</label>
-        <input type="number" name="teachingAverage" > 
-        <!--<min="0" max="20" step="0.1" required>--> 
+        <input type="number" name="teachingAverage">
+        <!--<min="0" max="20" step="0.1" required>-->
     </div>
 
     <div class="section-header">B. Students' feedback (Max Point 20)</div>
     <p><em>Note: 10 Credit point for each sem. & min.70% students data</em></p>
-    <table>
+    <table id="teaching-process-table2">
         <tr>
             <th>S. No.</th>
             <th>Semester</th>
@@ -89,18 +91,18 @@
         <tr>
             <td>1</td>
             <td><input type="text" name="feedbackSemester1" required></td>
-            <td><input type="text" name="feedbackSubjectCode1"required></td>
-            <td><input type="text" name="feedbackSubjectName1"required></td>
+            <td><input type="text" name="feedbackSubjectCode1" required></td>
+            <td><input type="text" name="feedbackSubjectName1" required></td>
             <td><input type="number" name="feedbackAverage1" required></td>
             <!-- <td id="feedbackPoints1"></td> -->
             <td><input type="text" name="feedbackDocumentIndex1"></td>
         </tr>
         <tr>
             <td>2</td>
-            <td><input type="text" name="feedbackSemester2"required></td>
-            <td><input type="text" name="feedbackSubjectCode2"required></td>
-            <td><input type="text" name="feedbackSubjectName2"required></td>
-            <td><input type="number" name="feedbackAverage2"required></td>
+            <td><input type="text" name="feedbackSemester2" required></td>
+            <td><input type="text" name="feedbackSubjectCode2" required></td>
+            <td><input type="text" name="feedbackSubjectName2" required></td>
+            <td><input type="number" name="feedbackAverage2" required></td>
             <!-- <td id = "feedbackPoints2"></td> -->
             <td><input type="text" name="feedbackDocumentIndex2"></td>
         </tr>
@@ -112,7 +114,7 @@
 
     <form id="appraisalForm">
         <!-- Previous sections remain the same -->
-        
+
         <div class="section-header">C. Departmental Activities (Max Credit 20)</div>
         <p><em>Note: 10 Credit point for each semester</em></p>
         <table>
@@ -126,18 +128,18 @@
             </tr>
             <tr>
                 <td>1</td>
-                <td><input type="text" name="deptSemester1"required></td>
-                <td><input type="text" name="deptActivity1"required></td>
-                <td><input type="number" name="deptCreditPoint1"required></td>
-                <td><input type="text" name="deptCriteria1"required></td>
+                <td><input type="text" name="deptSemester1" required></td>
+                <td><input type="text" name="deptActivity1" required></td>
+                <td><input type="number" name="deptCreditPoint1" required></td>
+                <td><input type="text" name="deptCriteria1" required></td>
                 <td><input type="text" name="deptDocumentIndex1"></td>
             </tr>
             <tr>
                 <td>2</td>
-                <td><input type="text" name="deptSemester2"required></td>
-                <td><input type="text" name="deptActivity2"required></td>
-                <td><input type="number" name="deptCreditPoint2"required></td>
-                <td><input type="text" name="deptCriteria2"required></td>
+                <td><input type="text" name="deptSemester2" required></td>
+                <td><input type="text" name="deptActivity2" required></td>
+                <td><input type="number" name="deptCreditPoint2" required></td>
+                <td><input type="text" name="deptCriteria2" required></td>
                 <td><input type="text" name="deptDocumentIndex2"></td>
             </tr>
         </table>
@@ -159,24 +161,24 @@
             </tr>
             <tr>
                 <td>1</td>
-                <td><input type="text" name="instSemester1"required></td>
-                <td><input type="text" name="instActivity1"required></td>
-                <td><input type="number" name="instCreditPoint1"required></td>
-                <td><input type="text" name="instCriteria1"required></td>
+                <td><input type="text" name="instSemester1" required></td>
+                <td><input type="text" name="instActivity1" required></td>
+                <td><input type="number" name="instCreditPoint1" required></td>
+                <td><input type="text" name="instCriteria1" required></td>
                 <td><input type="text" name="instDocumentIndex1"></td>
             </tr>
             <tr>
                 <td>2</td>
-                <td><input type="text" name="instSemester1"required></td>
-                <td><input type="text" name="instActivity1"required></td>
-                <td><input type="number" name="instCreditPoint1"required></td>
-                <td><input type="text" name="instCriteria1"required></td>
+                <td><input type="text" name="instSemester1" required></td>
+                <td><input type="text" name="instActivity1" required></td>
+                <td><input type="number" name="instCreditPoint1" required></td>
+                <td><input type="text" name="instCriteria1" required></td>
                 <td><input type="text" name="instDocumentIndex1"></td>
             </tr>
         </table>
 
         <div class="section-header">E. ACR maintained at institute level (Max Credit 20)</div>
-        
+
         <h3>Result (Max 10 Credit Point)</h3>
         <table>
             <tr>
@@ -221,15 +223,15 @@
             </tr>
             <tr>
                 <td>1</td>
-                <td><input type="text" name="resultSemester1"required></td>
-                <td><input type="text" name="resultSubjectCode1"required></td>
-                <td><input type="text" name="resultSubjectName1"required></td>
-                <td><input type="number" name="studentsRegistered1"required></td>
-                <td><input type="number" name="studentsPassed1"required></td>
+                <td><input type="text" name="resultSemester1" required></td>
+                <td><input type="text" name="resultSubjectCode1" required></td>
+                <td><input type="text" name="resultSubjectName1" required></td>
+                <td><input type="number" name="studentsRegistered1" required></td>
+                <td><input type="number" name="studentsPassed1" required></td>
                 <td><input type="number" name="resultPercentage1"></td>
             </tr>
         </table>
-        
+
         <div class="form-group">
             <label for="averageResult">Average Weightage out of 10 Points:</label>
             <!-- <input type="number" id="averageResult" name="averageResult" min="0" max="10" step="0.1" required> -->
@@ -256,11 +258,11 @@
             </tr>
             <tr>
                 <td>No. of Papers</td>
-                <td><input type="number" name="sciPapers"required></td>
-                <td><input type="number" name="sciExtendedPapers"required></td>
-                <td><input type="number" name="scopusPapers"required></td>
-                <td><input type="number" name="scopusIndexedPapers"required></td>
-                <td><input type="number" name="otherPapers"required></td>
+                <td><input type="number" name="sciPapers" required></td>
+                <td><input type="number" name="sciExtendedPapers" required></td>
+                <td><input type="number" name="scopusPapers" required></td>
+                <td><input type="number" name="scopusIndexedPapers" required></td>
+                <td><input type="number" name="otherPapers" required></td>
             </tr>
         </table>
 
@@ -270,92 +272,93 @@
         </div>
         <div class="section-header">F. Contribution to Society (Max Credit 10)</div>
         <br>
-    <table>
-        <thead>
-            <tr>
-                <th>S. No.</th>
-                <th>Semester</th>
-                <th>Activity</th>
-                <th>Credit Point</th>
-                <th>Criteria</th>
-                <th>Enclosure No.</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td><input type="text" name="cs_semester"required></td>
-                <td><input type="text" name="cs_activity"required></td>
-                <td><input type="text" name="cs_credit_point"required></td>
-                <td><input type="text" name="cs_criteria"required></td>
-                <td><input type="text" name="cs_enclosure_no"required></td>
-            </tr>
-            <!-- Repeat as needed -->
-        </tbody>
-    </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>S. No.</th>
+                    <th>Semester</th>
+                    <th>Activity</th>
+                    <th>Credit Point</th>
+                    <th>Criteria</th>
+                    <th>Enclosure No.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><input type="text" name="cs_semester" required></td>
+                    <td><input type="text" name="cs_activity" required></td>
+                    <td><input type="text" name="cs_credit_point" required></td>
+                    <td><input type="text" name="cs_criteria" required></td>
+                    <td><input type="text" name="cs_enclosure_no" required></td>
+                </tr>
+                <!-- Repeat as needed -->
+            </tbody>
+        </table>
 
-    <h2>Summary</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Summary</th>
-                <th>Academic Year 1</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>A. Teaching Process (Max Points 20)</td>
-                <td><input type="text" name="summary_tp_1"></td>
-               
-            </tr>
-            <tr>
-                <td>B. Students' feedback (Max Points 20)</td>
-                <td><input type="text" name="summary_sf_1"></td>
-                <!-- <td><input type="text" name="summary_sf_2"></td>
+        <h2>Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Summary</th>
+                    <th>Academic Year 1</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A. Teaching Process (Max Points 20)</td>
+                    <td><input type="text" name="summary_tp_1"></td>
+
+                </tr>
+                <tr>
+                    <td>B. Students' feedback (Max Points 20)</td>
+                    <td><input type="text" name="summary_sf_1"></td>
+                    <!-- <td><input type="text" name="summary_sf_2"></td>
                 <td><input type="text" name="summary_sf_3"></td> -->
-            </tr>
-            <tr>
-                <td>C. Departmental Activities (Max Points 20)</td>
-                <td><input type="text" name="summary_da_1"></td>
-                <!-- <td><input type="text" name="summary_da_2"></td>
+                </tr>
+                <tr>
+                    <td>C. Departmental Activities (Max Points 20)</td>
+                    <td><input type="text" name="summary_da_1"></td>
+                    <!-- <td><input type="text" name="summary_da_2"></td>
                 <td><input type="text" name="summary_da_3"></td> -->
-            </tr>
-            <tr>
-                <td>D. Institute Activities (Max Points 10)</td>
-                <td><input type="text" name="summary_ia_1"></td>
-                <!-- <td><input type="text" name="summary_ia_2"></td>
+                </tr>
+                <tr>
+                    <td>D. Institute Activities (Max Points 10)</td>
+                    <td><input type="text" name="summary_ia_1"></td>
+                    <!-- <td><input type="text" name="summary_ia_2"></td>
                 <td><input type="text" name="summary_ia_3"></td> -->
-            </tr>
-            <tr>
-                <td>E. ACR (Max Points 20)</td>
-                <td><input type="text" name="summary_acr_1"></td>
-                <!-- <td><input type="text" name="summary_acr_2"></td>
+                </tr>
+                <tr>
+                    <td>E. ACR (Max Points 20)</td>
+                    <td><input type="text" name="summary_acr_1"></td>
+                    <!-- <td><input type="text" name="summary_acr_2"></td>
                 <td><input type="text" name="summary_acr_3"></td> -->
-            </tr>
-            <tr>
-                <td>F. Contribution to Society (Max Points 10)</td>
-                <td><input type="text" name="summary_cs_1"></td>
-                <!-- <td><input type="text" name="summary_cs_2"></td>
+                </tr>
+                <tr>
+                    <td>F. Contribution to Society (Max Points 10)</td>
+                    <td><input type="text" name="summary_cs_1"></td>
+                    <!-- <td><input type="text" name="summary_cs_2"></td>
                 <td><input type="text" name="summary_cs_3"></td> -->
-            </tr>
-            <tr>
-                <td>Total (Max Points 100)</td>
-                <td><input type="text" name="summary_total_1"></td>
-                <!-- <td><input type="text" name="summary_total_2"></td>
+                </tr>
+                <tr>
+                    <td>Total (Max Points 100)</td>
+                    <td><input type="text" name="summary_total_1"></td>
+                    <!-- <td><input type="text" name="summary_total_2"></td>
                 <td><input type="text" name="summary_total_3"></td> -->
-            </tr>
-            <tr>
-                <td>Total on 10 Point scale</td>
-                <td><input type="text" name="summary_scale_1"></td>
-                <!-- <td><input type="text" name="summary_scale_2"></td>
+                </tr>
+                <tr>
+                    <td>Total on 10 Point scale</td>
+                    <td><input type="text" name="summary_scale_1"></td>
+                    <!-- <td><input type="text" name="summary_scale_2"></td>
                 <td><input type="text" name="summary_scale_3"></td> -->
-            </tr>
-        </tbody>
-    </table>
-    <p>Date: <input type="text" name="summary_date"></p>
-    <p>Signature of Faculty Member: <input type="file" name="summary_signature"></p>
+                </tr>
+            </tbody>
+        </table>
+        <p>Date: <input type="text" name="summary_date"></p>
+        <p>Signature of Faculty Member: <input type="file" name="summary_signature"></p>
 
         <button type="submit">Submit Appraisal Form</button>
     </form>
 </body>
+
 </html>

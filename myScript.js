@@ -1,146 +1,161 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const teachingProcessTable = document.getElementById('teaching-process-table')
+  // Attach the event listener to the table for inputs in both rows
+  teachingProcessTable.addEventListener('input', calculateTeachingPoints)
 
-    const teachingProcessTable = document.getElementById('teaching-process-table');
-    // Attach the event listener to the table for inputs in both rows
-    teachingProcessTable.addEventListener('input', calculateTeachingPoints);
+  function calculateTeachingPoints () {
+    let totalPoints = 0
+    let validRows = 0
 
-    function calculateTeachingPoints() {
-        let totalPoints = 0;
-        let validRows = 0;
+    // Row 1
+    let scheduledClassesRow1 = document.querySelector(
+      'input[name="scheduledClasses1"]'
+    ).value
+    let heldClassesRow1 = document.querySelector(
+      'input[name="heldClasses1"]'
+    ).value
+    let pointsCellRow1 = document.getElementsByClassName('.pointsEarned1')
 
-        // Row 1
-        let scheduledClassesRow1 = document.querySelector('input[name="scheduledClasses1"]').value;
-        let heldClassesRow1 = document.querySelector('input[name="heldClasses1"]').value;
-        let pointsCellRow1 = document.querySelector('.pointsEarned1');
-        
-        // Row 2
-        let scheduledClassesRow2 = document.querySelector('input[name="scheduledClasses2"]').value;
-        let heldClassesRow2 = document.querySelector('input[name="heldClasses2"]').value;
-        let pointsCellRow2 = document.querySelector('#pointsEarned2');
-        
-        // Calculate points for Row 1 if data is valid
-        if (scheduledClassesRow1 && heldClassesRow1) {
-            let percentage1 = (heldClassesRow1 / scheduledClassesRow1) * 100;
-            let points1 = calculatePoints(percentage1);
-            totalPoints += points1;
-            pointsCellRow1.textContent = points1;
-            validRows++;
-        } else {
-            pointsCellRow1.textContent = ''; // Clear if invalid input
-        }
+    // Row 2
+    let scheduledClassesRow2 = document.querySelector(
+      'input[name="scheduledClasses2"]'
+    ).value
+    let heldClassesRow2 = document.querySelector(
+      'input[name="heldClasses2"]'
+    ).value
+    let pointsCellRow2 = document.querySelector('#pointsEarned2')
 
-        // Calculate points for Row 2 if data is valid
-        if (scheduledClassesRow2 && heldClassesRow2) {
-            let percentage2 = (heldClassesRow2 / scheduledClassesRow2) * 100;
-            let points2 = calculatePoints(percentage2);
-            totalPoints += points2;
-            pointsCellRow2.textContent = points2;
-            validRows++;
-        } else {
-            pointsCellRow2.textContent = ''; // Clear if invalid input  
-        }
-
-        // Calculate and display average weightage
-        let avgWeightageInput = document.querySelector('input[name="teachingAverage"]');
-        let avgWeightageFinal = document.querySelector('input[name="summary_tp_1"]');
-        let avgWeightage = validRows > 0 ? (totalPoints / validRows) : 0;
-        avgWeightageInput.value = avgWeightage.toFixed(2);
-        avgWeightageFinal.value = avgWeightage.toFixed(2);
+    // Calculate points for Row 1 if data is valid
+    if (scheduledClassesRow1 && heldClassesRow1) {
+      let percentage1 = (heldClassesRow1 / scheduledClassesRow1) * 100
+      let points1 = calculatePoints(percentage1)
+      totalPoints += points1
+      pointsCellRow1.textContent = points1
+      validRows++
+    } else {
+      pointsCellRow1.textContent = '' // Clear if invalid input
     }
 
-    // Function to calculate points based on percentage
-    function calculatePoints(percentage) {
-        if (percentage >= 100) {
-            return 20;
-        } else if (percentage >= 90) {
-            return 18;
-        } else if (percentage >= 80) {
-            return 14;
-        } else if (percentage >= 70) {
-            return 10;
-        } else if (percentage >= 60) {
-            return 6;
-        } else {
-            return 0; // No points if less than 60%
-        }
+    // Calculate points for Row 2 if data is valid
+    if (scheduledClassesRow2 && heldClassesRow2) {
+      let percentage2 = (heldClassesRow2 / scheduledClassesRow2) * 100
+      let points2 = calculatePoints(percentage2)
+      totalPoints += points2
+      pointsCellRow2.textContent = points2
+      validRows++
+    } else {
+      pointsCellRow2.textContent = '' // Clear if invalid input
     }
 
-    const studentFeedback = document.getElementById('teaching-process-table');
-    // Attach the event listener to the table for inputs in both rows
-    teachingProcessTable.addEventListener('input', calculateStudentPoints);
+    // Calculate and display average weightage
+    let avgWeightageInput = document.querySelector(
+      'input[name="teachingAverage"]'
+    )
+    let avgWeightageFinal = document.querySelector('input[name="summary_tp_1"]')
+    let avgWeightage = validRows > 0 ? totalPoints / validRows : 0
+    avgWeightageInput.value = avgWeightage.toFixed(2)
+    avgWeightageFinal.value = avgWeightage.toFixed(2)
+  }
 
-    function calculateStudentPoints() {
-        let totalPoints = 0;
-        let validRows = 0;
-        // Row 1
-        let feedbackRow1 = document.querySelector('input[name="feedbackAverage1"]').value;
+  // Function to calculate points based on percentage
+  function calculatePoints (percentage) {
+    if (percentage >= 100) {
+      return 20
+    } else if (percentage >= 90) {
+      return 18
+    } else if (percentage >= 80) {
+      return 14
+    } else if (percentage >= 70) {
+      return 10
+    } else if (percentage >= 60) {
+      return 6
+    } else {
+      return 0 // No points if less than 60%
+    }
+  }
 
-        // Row 2
-        let feedbackRow2 = document.querySelector('input[name="feedbackAverage2"]').value;
-        
-        // Calculate points for Row 1 if data is valid
-        if (feedbackRow1) {
-            totalPoints = feedbackRow1
-            validRows++;
-        } else {
-            pointsCellRow1.textContent = ''; // Clear if invalid input
-        }
+  const studentFeedback = document.getElementById('teaching-process-table2')
+  // Attach the event listener to the table for inputs in both rows
+  studentFeedback.addEventListener('input', calculateStudentPoints)
 
-        // Calculate points for Row 2 if data is valid
-        if (feedbackRow2) {
-            totalPoints = feedbackRow2;
-            validRows++;
-        } else {
-            pointsCellRow2.textContent = ''; // Clear if invalid input
-        }
+  function calculateStudentPoints () {
+    let totalPoints = 0
+    let validRows = 0
+    // Row 1
+    let feedbackRow1 = document.querySelector(
+      'input[name="feedbackAverage1"]'
+    ).value
 
-        // Calculate and display average weightage
-        let avgWeightageInput = document.querySelector('input[name="feedbackAverage"]');
-        let avgWeightageFinal = document.querySelector('input[name="summary_sf_1"]');
-        let avgWeightage = validRows >0 ? (totalPoints / validRows): 0;
-        avgWeightageInput.value = avgWeightage.toFixed(2);
-        avgWeightageFinal.value = avgWeightage.toFixed(2);
+    // Row 2
+    let feedbackRow2 = document.querySelector(
+      'input[name="feedbackAverage2"]'
+    ).value
+
+    // Calculate points for Row 1 if data is valid
+    if (feedbackRow1) {
+      totalPoints = feedbackRow1
+      validRows++
+    } else {
+      pointsCellRow1.textContent = '' // Clear if invalid input
     }
 
-// YAHA PROBLEMS AARHI HAI
+    // Calculate points for Row 2 if data is valid
+    if (feedbackRow2) {
+      totalPoints = feedbackRow2
+      validRows++
+    } else {
+      pointsCellRow2.textContent = '' // Clear if invalid input
+    }
 
-    // const deptActivitytable = document.getElementById('teaching-process-table');
-    // // Attach the event listener to the table for inputs in both rows
-    // deptActivitytable.addEventListener('input', calculateDeptPoints);
+    // Calculate and display average weightage
+    let avgWeightageInput = document.querySelector(
+      'input[name="feedbackAverage"]'
+    )
+    let avgWeightageFinal = document.querySelector('input[name="summary_sf_1"]')
+    let avgWeightage = validRows > 0 ? totalPoints / validRows : 0
+    avgWeightageInput.value = avgWeightage.toFixed(2)
+    avgWeightageFinal.value = avgWeightage.toFixed(2)
+  }
 
-    // function calculateDeptPoints() {
-    //     let totalPoints = 0;
-    //     let validRows = 0;
-    //     // Row 1
-    //     let deptActyRow1 = document.querySelector('input[name="deptCreditPoint1"]').value;
+  // YAHA PROBLEMS AARHI HAI
 
-    //     // Row 2
-    //     let deptActyRow2 = document.querySelector('input[name="deptCreditPoint2"]').value;
-        
-    //     // Calculate points for Row 1 if data is valid
-    //     if (deptActyRow1) {
-    //         totalPoints = deptActyRow1
-    //         validRows++;
-    //     } else {
-    //         pointsCellRow1.textContent = ''; // Clear if invalid input
-    //     }
-    //     // Calculate points for Row 2 if data is valid
-    //     if (feedbackRow2) {
-    //         totalPoints = deptActyRow2;
-    //         validRows++;
-    //     } else {
-    //         pointsCellRow2.textContent = ''; // Clear if invalid input
-    //     }
+  // const deptActivitytable = document.getElementById('teaching-process-table');
+  // // Attach the event listener to the table for inputs in both rows
+  // deptActivitytable.addEventListener('input', calculateDeptPoints);
 
-    //     // Calculate and display average weightage
-    //     let avgWeightageInput = document.querySelector('input[name="deptCreditPoint"]');
-    //     let avgWeightageFinal = document.querySelector('input[name="summary_da_1"]');
-    //     let avgWeightage = validRows >0 ? (totalPoints + validRows): 0;
-    //     avgWeightageInput.value = avgWeightage.toFixed(2);
-    //     avgWeightageFinal.value = avgWeightage.toFixed(2);
-    // }
-});
-          // two nested event listener
+  // function calculateDeptPoints() {
+  //     let totalPoints = 0;
+  //     let validRows = 0;
+  //     // Row 1
+  //     let deptActyRow1 = document.querySelector('input[name="deptCreditPoint1"]').value;
+
+  //     // Row 2
+  //     let deptActyRow2 = document.querySelector('input[name="deptCreditPoint2"]').value;
+
+  //     // Calculate points for Row 1 if data is valid
+  //     if (deptActyRow1) {
+  //         totalPoints = deptActyRow1
+  //         validRows++;
+  //     } else {
+  //         pointsCellRow1.textContent = ''; // Clear if invalid input
+  //     }
+  //     // Calculate points for Row 2 if data is valid
+  //     if (feedbackRow2) {
+  //         totalPoints = deptActyRow2;
+  //         validRows++;
+  //     } else {
+  //         pointsCellRow2.textContent = ''; // Clear if invalid input
+  //     }
+
+  //     // Calculate and display average weightage
+  //     let avgWeightageInput = document.querySelector('input[name="deptCreditPoint"]');
+  //     let avgWeightageFinal = document.querySelector('input[name="summary_da_1"]');
+  //     let avgWeightage = validRows >0 ? (totalPoints + validRows): 0;
+  //     avgWeightageInput.value = avgWeightage.toFixed(2);
+  //     avgWeightageFinal.value = avgWeightage.toFixed(2);
+  // }
+})
+// two nested event listener
 
 // document.addEventListener('DOMContentLoaded', function () {
 //     const teachingProcessTable = document.getElementById('teaching-process-table');
@@ -209,5 +224,3 @@ document.addEventListener('DOMContentLoaded', function () {
 //         feedbackAverageInput.value = averageFeedback.toFixed(2);
 //     }
 // });
-
-
