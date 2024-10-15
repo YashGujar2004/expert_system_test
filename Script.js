@@ -1,492 +1,564 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> APPRAISAL AND 360° FEEDBACK FORM </title>
-    <link rel="stylesheet" href="myCss.css">
-    <script src="Script.js" defer></script>
-</head>
-<body>
-<form  id="myForm">
-    <div class="img">
-        <img src="img2.jpg" alt="image not found" class="imgtag">
-    </div>
-    <br>
-    <div class="form-border">
-    <h1 id="hello">APPRAISAL AND 360° FEEDBACK FORM</h1>
-    <br>
-    <div class="section-header">SECTION A</div>
-    <br>
-    <div class="form-group">
-        <label for="name">Name <span class="required">*</span></label>
-        <input type="text" id="name" name="name" required>
-    </div>
-    <div class="form-group">
-        <label for="designation">Designation <span class="required">*</span></label>
-        <input type="text" id="designation" name="designation" required>
-    </div>
-    <div class="form-group">
-        <label for="department">Department <span class="required">*</span></label>
-        <select name="department" id="department" required>
-            <option value="">Select Department</option>
-            <option value="CS">CS</option>
-            <option value="IT">IT</option>
-            <option value="AI&DS">AI&DS</option>
-            <option value="EnTC">EnTC</option>
-            <option value="Electrical">Electrical</option>
-            <option value="Mechanical">Mechanical</option>
-            <option value="Printing">Printing</option>
-        </select>
-    </div>
-    <!-- <div class="form-group">
-        <label for="year">Year <span class="required">*</span></label>
-        <input type="number" id="year" name="year" min="1" max="4" required>
-    </div> -->
+document.addEventListener('DOMContentLoaded', function () {
 
-    <div class="form-group">
-        <label for="academicYear">Academic Year <span class="required">*</span></label>
-        <input type="text" id="academicYear" name="academicYear" required>
-    </div>
-</div>
- <br>
- <br>
-<div class="form-border" >
-    <div class="section-header">A. Teaching Process (Max Point 20)</div>
-    <p><em>Note: 10 Credit point for each semester</em></p>
-    <table id="teaching-process-table">
-        <tr>
-            <th>S. No.</th>
-            <th>Semester <span class="required">*</span></th>
-            <th>Subject Name <span class="required">*</span></th>
-            <th>Subject Code <span class="required">*</span></th>
-            <th>No. of Scheduled Classes <span class="required">*</span></th>
-            <th>No. of actually held classes <span class="required">*</span></th>
-            <th>Points earned</th>
-            <th>Supporting Document Index No.</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>
-                <select name="semester1" id="semester1" required>
-                    <option value="">Select Semester</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                </select>
-            </td>
-            <td>
-            <select name="subjectName1" id="subjectName1" required>
-                <option value="">Select Subject</option>
-            </select></td>
-            <td><input type="text" name="subjectCode1" readonly required></td>
-            <td><input type="number" name="scheduledClasses1" required></td>
-            <td><input type="number" name="heldClasses1" required></td>
-            <td class ="pointsEarned1"></td>
-            <td><input type="text" name="documentIndex1"></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>
-                <select name="semester2" id="semester2" required>
-                    <option value="">Select Semester</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                </select>
-            </td>
-            <td>
-                <select name="subjectName2" id="subjectName2" required>
-                    <option value="">Select Subject</option>
-                </select>
-            </td>
-            <td><input type="text" name="subjectCode2" readonly required></td>
-            <td><input type="number" name="scheduledClasses2"required></td>
-            <td><input type="number" name="heldClasses2"required></td>
-            <td id = "pointsEarned2" ></td>
-            <td><input type="text" name="documentIndex2"></td>
-        </tr>
-    </table>
+    const subjectsByDepartment = {
+        'CS': {
+            'Data Structures': '310251',
+            'Wb Technology': '310252',
+            'Database Mgnt': '310241',
+            'CN & Security': '310244',
 
-    <div class="form-group">
-        <label for="teachingAverage">Average Weightage out of 20 Points:</label>
-        <input type="number" name="teachingAverage" > 
-        <!--<min="0" max="20" step="0.1" required>--> 
-    </div>
+        },
+        'IT': {
+            'Web Dev': '314452',
+            'NetworkSecurity': '314451',
+            'Cloud Computing': '314452',
+            'OS' : '314442',
+            'HCI' : '314444'
+        },
+        'AI&DS': {
+            'DBMS': '310241',
+            'CN': '317521',
+            'Web Technology': '310252',
+            'AI' : '310253',
+            'Data Science' : '317529',
+            'ANN' : '317531',
+            'DSA': '213831'
+        },
+        'EnTC': {
+            'Digital Coms': '304181',
+            'Microwave Eng': '304183',
+            'Signal Processn': '304192',
+            'Power Devices' : '304194',
+        },
+        'Electrical': {
+            'Power Systems': '303146',
+            'Control Systems': '303147',
+            'Electric Machines': '303142',
+            'Industrial Mgnt' : '311121'
+        },
+        'Mechanical': {
+            'Thermodynamics': '302041',
+            'Fluid Mechanics': '302042',
+            'Machine Design': '302043',
+            'CAD' : '302050',
+            'Transmission Sys' : '302051'
+        },
+        'Printing': {
+            'Printing Network': '308282',
+            'Graphic Design': '308287',
+            'Print Quality': '308285',
+            'Color Mgnt ': '308283',
+            'Ink Technology' : '308290'
+        }
+    };
 
-</div>
-<br>
- <br>
-<div class="form-border" >
-    <div class="section-header">B. Students' feedback (Max Point 20)</div>
-    <p><em>Note: 10 Credit point for each sem. & min.70% students data</em></p>
+    // Function to populate subject dropdown based on selected department
+    function populateSubjects(departmentSelect, subjectSelect, subjectCodeInput) {
+        const department = departmentSelect.value;
+        subjectSelect.innerHTML = '<option value="">Select Subject</option>';
+        subjectCodeInput.value = '';
 
-    <table id="student-feedback-table">
-        <tr>
-            <th>S. No.</th>
-            <th>Semester <span class="required">*</span></th>
-            <th>Subject Name <span class="required">*</span></th>
-            <th>Subject Code <span class="required">*</span></th>
-            <th>Average Student feedback on the scale of 20 <span class="required">*</span></th>
-            <th>Supporting Document Index No.</th>
-        </tr>
-            <tr>
-                <td>1</td>
-                <td><input type="text" name="feedbackSemester1" readonly required></td>
-                <td><input type="text" name="feedbackSubjectName1" readonly required></td>
-                <td><input type="text" name="feedbackSubjectCode1" readonly required></td>
-                <td><input type="number" name="feedbackAverage1" min="0" max="20" required></td>
-                <td><input type="text" name="feedbackDocumentIndex1"></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><input type="text" name="feedbackSemester2"readonly required></td>
-                <td><input type="text" name="feedbackSubjectName2"readonly required></td>
-                <td><input type="text" name="feedbackSubjectCode2"readonly required></td>
-                <td><input type="number" name="feedbackAverage2" min="0" max="20" required></td>
-                <td><input type="text" name="feedbackDocumentIndex2"></td>
-            </tr>
-    </table>
-    <div class="form-group">
-        <label for="feedbackAverage">Average Weightage out of 20 Points:</label>
-        <input type="number" name="feedbackAverage">
-    </div>
-</div>
-<br>
- <br>
-<div class="form-border" >
-    <form id="appraisalForm">
-      
-        <div class="section-header">C. Departmental Activities (Max Credit 20)</div>
-        <p><em>Note: 10 Credit point for each semester</em></p>
+        if (department in subjectsByDepartment) {
+            for (let subject in subjectsByDepartment[department]) {
+                const option = document.createElement('option');
+                option.value = subject;
+                option.textContent = subject;
+                subjectSelect.appendChild(option);
+            }
+        }
+    }
 
-    <table id="dept-activity-table">
-            <tr>
-                <th>S. No.</th>
-                <th>Semester <span class="required">*</span></th>
-                <th>Domain<span class="required">*</span></th>
-                <th>Activity <span class="required">*</span></th>
-                <th>Credit Point <span class="required">*</span></th>
-                <th>Criteria </th>
-                <th>Supporting Document Index No.</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td><input type="text" name="deptSemester1" readonly required></td>
-                <!-- <td><input type="text" name="deptActivity1"required></td> -->
-                <td>
-                    <select id="deptDomain1" name="deptDomain1">
-                    <option value="">Select Domain</option>
-                    <option value="SSS">Student Support Services</option>
-                    <option value="APaD">Academic Development</option>
-                    <option value="ITA">IT Activities</option>
-                    <option value="ID">Inistitutional Development</option>
-                    </select></td>
-                    <td>
-                        <select id="deptActivity1" name="deptActivity1">
-                            <option value="">Select Activity</option>
-                        </select>
-                    </td>    
-                <td><input type="number" name="deptCreditPoint1"required></td>
-                <td><input type="text" name="deptCriteria1" min="0" max="10" ></td>
-                <td><input type="text" name="deptDocumentIndex1"></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><input type="text" name="deptSemester2" readonly required></td>
-                <td>
-                    <select id="deptDomain2" name="deptDomain2">
-                    <option value="">Select Domain</option>
-                    <option value="SSS">Student Support Services</option>
-                    <option value="APaD">Academic Development</option>
-                    <option value="ITA">IT Activities</option>
-                    <option value="ID">Inistitutional Development</option>
-                    </select></td>
-                    <td>
-                        <select id="deptActivity2" name="deptActivity2">
-                            <option value="">Select Activity</option>
-                        </select>
-                    </td>
-                <td><input type="number" name="deptCreditPoint2" min="0" max="10" required></td>
-                <td><input type="text" name="deptCriteria2"></td>
-                <td><input type="text" name="deptDocumentIndex2"></td>
-            </tr>
-        </table>
-        <div class="form-group">
-            <label for="deptCreditPoint">Average Weightage out of 20 Points:</label>
-            <input type="number" name="deptCreditPoint">
-        </div>
-    </div>
-<br>
-<br>
-    <div class="form-border" >
-        <div class="section-header">D. Institute Activities (Max Credit 10)</div>
-        <p><em>Note: 5 Credit point for each semester</em></p>
+    // Function to set subject code based on selected subject
+    function setSubjectCode(departmentSelect, subjectSelect, subjectCodeInput) {
+        const department = departmentSelect.value;
+        const subject = subjectSelect.value;
+        if (department in subjectsByDepartment && subject in subjectsByDepartment[department]) {
+            subjectCodeInput.value = subjectsByDepartment[department][subject];
+        } else {
+            subjectCodeInput.value = '';
+        }
+    }
 
-    <table id="inst-activity-table">
-            <tr>
-                <th>S. No.</th>
-                <th>Semester <span class="required">*</span></th>
-                <th>Activity <span class="required">*</span></th>
-                <th>Credit Point <span class="required">*</span></th>
-                <th>Criteria</th>
-                <th>Supporting Document Index No.</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td><input type="text" name="instSemester1" readonly required></td>
-                <td>
-                    <select id="instActivity1" name="instActivity1">
-                    <option value="">Select Activity</option>
-                    <option value="NCC/NSS activities involvement">NCC/NSS activities involvement</option>
-                    <option value="Swachh Bharat Mission">Swachh Bharat Mission</option>
-                    <option value="Blood Donation Programmes">Blood Donation Programmes</option>
-                    <option value="Medical/Health Camp Organization">Medical/Health Camp Organization</option>
-                    <option value="Conduct of Yoga Classes">Conduct of Yoga Classes</option>
-                    <option value="Unnat Bharat Abhiyan">Unnat Bharat Abhiyan</option>
-                    <option value="Nation Building Activities">Nation Building Activities</option>
-                    <option value="Women Empowerment Programmes">Women Empowerment Programmes</option>
-                    <option value="Donations">Donations</option>
-                    <option value="Tree Plantation">Tree Plantation</option>
-                        <option value="Technical education Awareness">Technical education Awareness</option>
-                        <option value="Any other activity">Any other activity</option>
-                    </select></td>
-                <td><input type="number" name="instCreditPoint1" min="0" max="10" required></td>
-                <td><input type="text" name="instCriteria1"></td>
-                <td><input type="text" name="instDocumentIndex1"></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><input type="text" name="instSemester2"readonly required></td>
-                <td>
-                    <select id="instActivity2" name="instActivity2">
-                    <option value="">Select Activity</option>
-                    <option value="NCC/NSS activities involvement">NCC/NSS activities involvement</option>
-                    <option value="Swachh Bharat Mission">Swachh Bharat Mission</option>
-                    <option value="Blood Donation Programmes">Blood Donation Programmes</option>
-                    <option value="Medical/Health Camp Organization">Medical/Health Camp Organization</option>
-                    <option value="Conduct of Yoga Classes">Conduct of Yoga Classes</option>
-                    <option value="Unnat Bharat Abhiyan">Unnat Bharat Abhiyan</option>
-                    <option value="Nation Building Activities">Nation Building Activities</option>
-                    <option value="Women Empowerment Programmes">Women Empowerment Programmes</option>
-                    <option value="Donations">Donations</option>
-                    <option value="Tree Plantation">Tree Plantation</option>
-                    <option value="Technical education Awareness">Technical education Awareness</option>
-                    <option value="Any other activity">Any other activity</option>
-                    </select></td>
-                <td><input type="number" name="instCreditPoint2" min="0" max="10" required></td>
-                <td><input type="text" name="instCriteria2" ></td>
-                <td><input type="text" name="instDocumentIndex2"></td>
-            </tr>
-        </table>
-        <div class="form-group"></div>
-            <label for="instCreditPoint">Average Weightage out of 10 Points:</label>
-            <input type="number" name="instCreditPoint">
-        </div>
-    </div>
-    <br>
-    <br>
 
-    <div class="form-border">
-        <div class="section-header">E. ACR maintained at institute level (Max Credit 20)</div>
+// Function to populate other tables
+function populateOtherTables(rowNumber, values) {
+    // Populate student feedback table
+    document.querySelector(`input[name="feedbackSemester${rowNumber}"]`).value = values.semester;
+    document.querySelector(`input[name="feedbackSubjectName${rowNumber}"]`).value = values.subjectName;
+    document.querySelector(`input[name="feedbackSubjectCode${rowNumber}"]`).value = values.subjectCode;
+
+    // Populate depart activity table
+    document.querySelector(`input[name="deptSemester${rowNumber}"]`).value = values.semester;
+    
+    // Populate inst activity table
+    document.querySelector(`input[name="instSemester${rowNumber}"]`).value = values.semester;
+
+    // Populate result summary table
+    document.querySelector(`input[name="resultSemester${rowNumber}"]`).value = values.semester;
+    document.querySelector(`input[name="resultSubjectName${rowNumber}"]`).value = values.subjectName;
+    document.querySelector(`input[name="resultSubjectCode${rowNumber}"]`).value = values.subjectCode;
+}
+
+// Set up event listeners for department and subject dropdowns
+for (let i = 1; i <= 2; i++) {
+    const semesterSelect = document.querySelector(`select[name="semester${i}"]`);
+    const departmentSelect = document.querySelector(`select[name="department"]`);
+    const subjectSelect = document.querySelector(`select[name="subjectName${i}"]`);
+    const subjectCodeInput = document.querySelector(`input[name="subjectCode${i}"]`);
+
+    departmentSelect.addEventListener('change', () => {
+        populateSubjects(departmentSelect, subjectSelect, subjectCodeInput);
+    });
+
+    subjectSelect.addEventListener('change', () => {
+        setSubjectCode(departmentSelect, subjectSelect, subjectCodeInput);
+        populateOtherTables(i, {
+            semester: semesterSelect.value,
+            subjectName: subjectSelect.value,
+            subjectCode: subjectCodeInput.value
+        });
+    });
+
+    semesterSelect.addEventListener('change', () => {
+        populateOtherTables(i, {
+            semester: semesterSelect.value,
+            subjectName: subjectSelect.value,
+            subjectCode: subjectCodeInput.value
+        });
+    });
+}
+
+// Teaching Process table
+
+    const teachingProcessTable = document.getElementById('teaching-process-table');
+    // Attach the event listener to the table for inputs in both rows
+    teachingProcessTable.addEventListener('input', calculateTeachingPoints);
+
+    function calculateTeachingPoints() {
+        let totalPoints = 0;
+        let validRows = 0;
+
+        // Row 1
+        let scheduledClassesRow1 = document.querySelector('input[name="scheduledClasses1"]').value;
+        let heldClassesRow1 = document.querySelector('input[name="heldClasses1"]').value;
+        let pointsCellRow1 = document.querySelector('.pointsEarned1');
         
-        <h3>Result (Max 10 Credit Point)</h3>
-    <table>
-            <tr>
-                <th>Category</th>
-                <th>Extraordinary</th>
-                <th>Excellent</th>
-                <th>Very Good</th>
-                <th>Good</th>
-                <th>Satisfactory</th>
-                <th>Poor</th>
-            </tr>
-            <tr>
-                <td>Points</td>
-                <td>10</td>
-                <td>9</td>
-                <td>8</td>
-                <td>7</td>
-                <td>5</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>Result %</td>
-                <td>100-96%</td>
-                <td>95-90%</td>
-                <td>89-80%</td>
-                <td>79-70%</td>
-                <td>69-55%</td>
-                <td>Below 55%</td>
-            </tr>
-        </table>
+        // Row 2
+        let scheduledClassesRow2 = document.querySelector('input[name="scheduledClasses2"]').value;
+        let heldClassesRow2 = document.querySelector('input[name="heldClasses2"]').value;
+        let pointsCellRow2 = document.querySelector('#pointsEarned2');
+        
+        // Calculate points for Row 1 
+        if (scheduledClassesRow1 && heldClassesRow1) {
+            let percentage1 = (heldClassesRow1 / scheduledClassesRow1) * 100;
+            let points1 = calculatePoints(percentage1);
+            totalPoints += points1;
+            pointsCellRow1.textContent = points1;
+            validRows++;
+        } else {
+            pointsCellRow1.textContent = ''; 
+        }
 
-        <h4>Result Summary</h4>
-    <table id="result-summary-table">
-            <tr>
-                <th>S. No.</th>
-                <th>Semester <span class="required">*</span></th>
-                <th>Subject Name <span class="required">*</span></th>
-                <th>Subject Code <span class="required">*</span></th>
-                <th>No. of Students Registered <span class="required">*</span></th>
-                <th>No. of Students Passed <span class="required">*</span></th>
-                <th>Result %</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td><input type="text" name="resultSemester1"readonly required></td>
-                <td><input type="text" name="resultSubjectName1"readonly required></td>
-                <td><input type="text" name="resultSubjectCode1"readonly required></td>
-                <td><input type="number" name="studentsRegistered1"required></td>
-                <td><input type="number" name="studentsPassed1"required></td>
-                <td class="resultPercentage1"></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><input type="text" name="resultSemester2"readonly required></td>
-                <td><input type="text" name="resultSubjectName2"readonly required></td>
-                <td><input type="text" name="resultSubjectCode2"readonly required></td>
-                <td><input type="number" name="studentsRegistered2"required></td>
-                <td><input type="number" name="studentsPassed2"required></td>
-                <td class="resultPercentage2"></td>
-            </tr>
-        </table>
-</div>
-<br>
-<br>
+        // Calculate points for Row 2 
+        if (scheduledClassesRow2 && heldClassesRow2) {
+            let percentage2 = (heldClassesRow2 / scheduledClassesRow2) * 100;
+            let points2 = calculatePoints(percentage2);
+            totalPoints += points2;
+            pointsCellRow2.textContent = points2;
+            validRows++;
+        } else {
+            pointsCellRow2.textContent = '';   
+        }
 
-<div class="form-border">
-        <h3>Research (Max 10 Credit Point)</h3>
-        <h4>Research Publication Summary</h4>
-    <table id="research-table">
-            <tr>
-                <th>Category</th>
-                <th>SCI <span class="required">*</span></th>
-                <th>SCI-Extended <span class="required">*</span></th>
-                <th>Scopus <span class="required">*</span></th>
-                <th>Scopus Indexed / WOS <span class="required">*</span></th>
-                <th>Other <span class="required">*</span></th>
-            </tr>
-            <tr>
-                <td>Marks (per unit)</td>
-                <td>4</td>
-                <td>3</td>
-                <td>2</td>
-                <td>1.5</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>No. of Papers</td>
-                <td><input type="number" name="sciPapers"required></td>
-                <td><input type="number" name="sciExtendedPapers"required></td>
-                <td><input type="number" name="scopusPapers"required></td>
-                <td><input type="number" name="scopusIndexedPapers"required></td>
-                <td><input type="number" name="otherPapers" required></td>
-            </tr>
-        </table>
+        // Calculate and display average weightage
+        let avgWeightageInput = document.querySelector('input[name="teachingAverage"]');
+        let avgWeightageFinal = document.querySelector('input[name="summary_tp_1"]');
+        let avgWeightage = validRows > 0 ? (totalPoints / validRows) : 0;
+        avgWeightageInput.value = avgWeightage.toFixed(2);
+        avgWeightageFinal.value = avgWeightage.toFixed(2);
+    }
 
-        <div class="form-group">
-            <label for="averageResult">Average Weightage out of 20 Points:</label>
-            <input type="number" name="averageResult" > 
-        </div>
-        <div class="section-header">F. Contribution to Society (Max Credit 10)</div>
-        <br>
-    <table id = "contribution-table">
-        <thead>
-            <tr>
-                <th>S. No.</th>
-                <th>Semester <span class="required">*</span></th>
-                <th>Activity <span class="required">*</span></th>
-                <th>Credit Point <span class="required">*</span></th>
-                <th>Criteria</th>
-                <th>Enclosure No</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td><input type="text" name="cs_semester"required></td>
-                <td><input type="text" name="cs_activity"required></td>
-                <td><input type="text" name="cs_credit_point"required></td>
-                <td><input type="text" name="cs_criteria"></td>
-                <td><input type="text" name="cs_enclosure_no"></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<br>
-<br>
-<div class="form-border">
-    <h2>Summary</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Summary</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>A. Teaching Process (Max Points 20)</td>
-                <td><input type="text" name="summary_tp_1"></td>
-               
-            </tr>
-            <tr>
-                <td>B. Students' feedback (Max Points 20)</td>
-                <td><input type="text" name="summary_sf_1"></td>
-                <!-- <td><input type="text" name="summary_sf_2"></td>
-                <td><input type="text" name="summary_sf_3"></td> -->
-            </tr>
-            <tr>
-                <td>C. Departmental Activities (Max Points 20)</td>
-                <td><input type="text" name="summary_da_1"></td>
-                <!-- <td><input type="text" name="summary_da_2"></td>
-                <td><input type="text" name="summary_da_3"></td> -->
-            </tr>
-            <tr>
-                <td>D. Institute Activities (Max Points 10)</td>
-                <td><input type="text" name="summary_ia_1"></td>
-                <!-- <td><input type="text" name="summary_ia_2"></td>
-                <td><input type="text" name="summary_ia_3"></td> -->
-            </tr>
-            <tr>
-                <td>E. ACR (Max Points 20)</td>
-                <td><input type="text" name="summary_acr_1"></td>
-                <!-- <td><input type="text" name="summary_acr_2"></td>
-                <td><input type="text" name="summary_acr_3"></td> -->
-            </tr>
-            <tr>
-                <td>F. Contribution to Society (Max Points 10)</td>
-                <td><input type="text" name="summary_cs_1"></td>
-                <!-- <td><input type="text" name="summary_cs_2"></td>
-                <td><input type="text" name="summary_cs_3"></td> -->
-            </tr>
-            <tr>
-                <td>Total (Max Points 100)</td>
-                <td><input type="text" name="summary_total_1"></td>
-                <!-- <td><input type="text" name="summary_total_2"></td>
-                <td><input type="text" name="summary_total_3"></td> -->
-            </tr>
-            <tr>
-                <td>Total on 10 Point scale</td>
-                <td><input type="text" name="summary_scale_1"></td>
-                <!-- <td><input type="text" name="summary_scale_2"></td>
-                <td><input type="text" name="summary_scale_3"></td> -->
-            </tr>
-        </tbody>
-    </table>
-        <button type="submit" id="printBtn">Submit Appraisal Form</button>
-</form>
-    </div>
-</body>
-</html>
+    // Function to calculate points based on percentage
+    function calculatePoints(percentage) {
+        if (percentage >= 100) {
+            return 20;
+        } else if (percentage >= 90) {
+            return 18;
+        } else if (percentage >= 80) {
+            return 14;
+        } else if (percentage >= 70) {
+            return 10;
+        } else if (percentage >= 60) {
+            return 6;
+        } else {
+            return 0; // No points if less than 60%
+        }
+    }
+    
+// Student Feedback Table
+
+    const studentFeedbackTable = document.getElementById('student-feedback-table');
+    // Attach the event listener to the table for inputs in both rows
+    studentFeedbackTable.addEventListener('input', calculateStudentPoints);
+
+    function calculateStudentPoints() {
+        // Row 1
+        let feedbackRow1 = document.querySelector('input[name="feedbackAverage1"]').value;
+
+        // Row 2
+        let feedbackRow2 = document.querySelector('input[name="feedbackAverage2"]').value;
+        let num1 = parseFloat(feedbackRow1) || 0;
+        let num2 = parseFloat(feedbackRow2) || 0;
+
+        // Calculate and display average weightage
+        let avgWeightageInput = document.querySelector('input[name="feedbackAverage"]');
+        let avgWeightageFinal = document.querySelector('input[name="summary_sf_1"]');
+        //let avgWeightage = validRows > 0 ? ((num1 + num2)/2): 0;
+        let avgWeightage = (num1 + num2)/2;
+        avgWeightageInput.value = Math.round(avgWeightage.toFixed(2));
+        avgWeightageFinal.value = avgWeightage.toFixed(2);
+        // document.getElementById('feedbackAverage').textContent = avgWeightage;
+    }
+
+//Deparmental Activity Table
+
+    const deptActivitytable = document.getElementById('dept-activity-table');
+    deptActivitytable.addEventListener('input', calculateDeptPoints);
+
+    function calculateDeptPoints() {
+
+        let deptActyRow1 = document.querySelector('input[name="deptCreditPoint1"]').value;
+        let deptActyRow2 = document.querySelector('input[name="deptCreditPoint2"]').value;
+        let num1 = parseFloat(deptActyRow1) ||0;
+        let num2 = parseFloat(deptActyRow2) ||0;
+
+        // Calculate and display average weightage
+        let avgWeightageInput = document.querySelector('input[name="deptCreditPoint"]');
+        let avgWeightageFinal = document.querySelector('input[name="summary_da_1"]');
+        // let avgWeightage = ((num1 + num2)/20) * 20 ; THIS ALSO GIVES THE SAME OUTPUT
+        let avgWeightage = (num1 + num2);
+        avgWeightageInput.value = avgWeightage.toFixed(2);
+        avgWeightageFinal.value = avgWeightage.toFixed(2);
+    }
+
+// credit points to departmental options
+
+// Define credit points for activities
+const activityCreditPoints = {
+    SSS: {
+        'Student Club in charge': 10,
+        'Sports': 10,
+        'Training and Placement': 8,
+        'Academic Cordinator': 10,
+        'Antiragging Cordinator': 8,
+        'Skill Hub': 8
+    },
+    APaD: {
+        'Entrepreneurship cell': 8,
+        'TECHFest': 10,
+        'Campaigning': 8
+    },
+    ITA: {
+        'Officer for Valuation': 8,
+        'Institute Website': 8,
+        'Online Counseling': 8,
+        'MIS Monitoring': 6
+    },
+    ID: {
+        'Campus Maintenance': 6,
+        'Sponsored Projects': 8,
+        'Alumni Association': 6
+    }
+};
+
+// Event listener for department domain 1
+document.getElementById('deptDomain1').addEventListener('change', function() {
+    const selectedDomain = this.value;
+    const activitySelect = document.getElementById('deptActivity1');
+    
+    // Clear previous activity options
+    activitySelect.innerHTML = '<option value="">Select Activity</option>';
+    
+    // Get the activities for the selected domain
+    const activities = activityCreditPoints[selectedDomain];
+    
+    // Populate the activity select dropdown
+    if (activities) {
+        Object.keys(activities).forEach(function(activity) {
+            const option = document.createElement('option');
+            option.value = activity;
+            option.text = activity;
+            activitySelect.appendChild(option);
+        });
+    }
+});
+
+// Event listener for department activity 1 to assign credits automatically
+document.getElementById('deptActivity1').addEventListener('change', function() {
+    const selectedDomain = document.getElementById('deptDomain1').value;
+    const selectedActivity = this.value;
+    
+    // Get the credit points for the selected activity
+    const creditPoints = activityCreditPoints[selectedDomain][selectedActivity] || 0;
+
+    // Assign credit points to the corresponding input field
+    document.querySelector('input[name="deptCreditPoint1"]').value = creditPoints;
+    calculateDeptPoints(); // Recalculate department points after assignment
+});
+
+// Repeat for deptDomain2 and deptActivity2
+document.getElementById('deptDomain2').addEventListener('change', function() {
+    const selectedDomain = this.value;
+    const activitySelect = document.getElementById('deptActivity2');
+    
+    activitySelect.innerHTML = '<option value="">Select Activity</option>';
+    
+    const activities = activityCreditPoints[selectedDomain];
+    if (activities) {
+        Object.keys(activities).forEach(function(activity) {
+            const option = document.createElement('option');
+            option.value = activity;
+            option.text = activity;
+            activitySelect.appendChild(option);
+        });
+    }
+});
+
+document.getElementById('deptActivity2').addEventListener('change', function() {
+    const selectedDomain = document.getElementById('deptDomain2').value;
+    const selectedActivity = this.value;
+    
+    const creditPoints = activityCreditPoints[selectedDomain][selectedActivity] || 0;
+
+    document.querySelector('input[name="deptCreditPoint2"]').value = creditPoints;
+    calculateDeptPoints(); // Recalculate department points after assignment
+});
+
+// Similarly, implement for institute activities if necessary
+
+//Institute Activities
+const domainActivities = {
+    SSS: ['Student Club in charge','Sports', 'Training and Placement','Academic Cordinator', 'Antiragging Cordinator','Skill Hub'],
+    APaD: ['Entrepreneurship cell', 'TECHFest', 'Campaigning'],
+    ITA: ['Officer for Valuation', 'Institute Website', 'Online Counseling', 'MIS Monitoring'],
+    ID: ['Campus Maintenance', 'Sponsored Projects', 'Alumni Association']
+};
+
+document.getElementById('deptDomain1').addEventListener('change', function() {
+    const selectedDomain = this.value;
+    const activitySelect = document.getElementById('deptActivity1');
+    
+    // Clear previous activity options
+    activitySelect.innerHTML = '<option value="">Select Activity</option>';
+    
+    // Get the activities for the selected domain
+    const activities = domainActivities[selectedDomain];
+    
+    // Populate the activity select dropdown
+    if (activities) {
+        activities.forEach(function(activity) {
+            const option = document.createElement('option');
+            option.value = activity;
+            option.text = activity;
+            activitySelect.appendChild(option);
+        });
+    }
+});
+document.getElementById('deptDomain2').addEventListener('change', function() {
+    const selectedDomain = this.value;
+    const activitySelect = document.getElementById('deptActivity2');
+    
+    // Clear previous activity options
+    activitySelect.innerHTML = '<option value="">Select Activity</option>';
+    
+    // Get the activities for the selected domain
+    const activities = domainActivities[selectedDomain];
+    
+    // Populate the activity select dropdown
+    if (activities) {
+        activities.forEach(function(activity) {
+            const option = document.createElement('option');
+            option.value = activity;
+            option.text = activity;
+            activitySelect.appendChild(option);
+        });
+    }
+});
+
+// Institute table calculations
+const instituteActivityCreditPoints = {
+    'NCC/NSS activities involvement': 4,
+    'Swachh Bharat Mission': 8,
+    'Blood Donation Programmes': 10,
+    'Medical/Health Camp Organization': 10,
+    'Conduct of Yoga Classes': 8,
+    'Unnat Bharat Abhiyan': 4,
+    'Nation Building Activities': 2,
+    'Women Empowerment Programmes': 6,
+    'Donations': 2,
+    'Tree Plantation': 2,
+    'Technical education Awareness': 8,
+    'Any other activity': 4
+};
+
+document.querySelector('select[name="instActivity1"]').addEventListener('change', function() {
+    const selectedActivity = this.value;
+    const creditPoints = instituteActivityCreditPoints[selectedActivity] || 0;
+    console.log("Selected activity: ", selectedActivity, " | Assigned credit: ", creditPoints);
+    document.querySelector('input[name="instCreditPoint1"]').value = creditPoints;
+    calculateInstPoints();
+});
+
+document.querySelector('select[name="instActivity2"]').addEventListener('change', function() {
+    const selectedActivity = this.value;
+    const creditPoints = instituteActivityCreditPoints[selectedActivity] || 0;
+    document.querySelector('input[name="instCreditPoint2"]').value = creditPoints;
+    calculateInstPoints();
+});
+
+// Function to calculate total and average institute points
+function calculateInstPoints() {
+    let instCredRow1 = document.querySelector('input[name="instCreditPoint1"]').value;
+    let instCredRow2 = document.querySelector('input[name="instCreditPoint2"]').value;
+
+    let mynum1 = parseFloat(instCredRow1) || 0;
+    let mynum2 = parseFloat(instCredRow2) || 0;
+
+    let totalCredits = mynum1 + mynum2;
+    let averageCredits = totalCredits / 2;
+
+    document.querySelector('input[name="instCreditPoint"]').value = averageCredits.toFixed(2);
+    // Update the summary table with the calculated average
+    document.querySelector('input[name="summary_ia_1"]').value = averageCredits.toFixed(2);
+}
+
+// Result Summary Table
+
+    const resSummaryTable = document.getElementById('result-summary-table');
+    // Attach the event listener to the table for inputs in both rows
+    resSummaryTable.addEventListener('input', calculateresult);
+
+    function calculateresult(){
+        let totalPoints2 = 0;
+        let validRows2 = 0;
+
+        let registedRow1 = document.querySelector('input[name="studentsRegistered1"]').value;
+        let passedRow1 = document.querySelector('input[name="studentsPassed1"]').value;
+        let result1 = document.querySelector('.resultPercentage1');
+        
+        // Row 2
+        let registedRow2 = document.querySelector('input[name="studentsRegistered2"]').value;
+        let passedRow2 = document.querySelector('input[name="studentsPassed2"]').value;
+        let result2 = document.querySelector('.resultPercentage2');
+
+        // Calculate points for Row 1 if data is valid
+        if (passedRow1 && registedRow1) {
+            let percentage1 = (passedRow1 / registedRow1) * 100;
+            let points11 = calculaterespoints(percentage1);
+            totalPoints2 += points11;
+            result1.textContent = percentage1.toFixed(2);
+            validRows2++;
+        } else {
+            result1.textContent = ''; // Clear if invalid input
+        }
+
+        // Calculate points for Row 2 if data is valid
+        if (passedRow2 && registedRow2) {
+            let percentage2 = (passedRow2 / registedRow2) * 100;
+            let points22 = calculaterespoints(percentage2);
+            totalPoints2 += points22;
+            result2.textContent = percentage2.toFixed(2);
+            validRows2++;
+        } else {
+            result2.textContent = ''; // Clear if invalid input  
+        }
+
+        // Calculate and display average weightage
+        let avgWeightageInput = document.querySelector('input[name="averageResult"]');
+        
+        let avgWeightage = validRows2 > 0 ? (totalPoints2 / validRows2) : 0;
+        avgWeightageInput.value = Math.round(avgWeightage.toFixed(2));
+        document.querySelector('input[name="summary_acr_1"]').value = avgWeightage.toFixed(2);
+
+    }
+    // Function to calculate points based on percentage
+    function calculaterespoints(percentage) {
+        if (percentage >= 96) {
+            return 20;
+        } else if (percentage >= 90) {
+            return 18;
+        } else if (percentage >= 80) {
+            return 14;
+        } else if (percentage >= 70) {
+            return 10;
+        } else if (percentage >= 55) {
+            return 6;    
+        } else{
+            return 0;
+        }
+    }
+
+// Research Table
+
+// Contribution To Society Table
+
+const contibutionTable = document.querySelector('input[name="cs_credit_point"]');
+const summaryCsField = document.querySelector('input[name="summary_cs_1"]');
+
+contibutionTable.addEventListener('input', function() {
+    // Update the summary table's contribution to society field
+    summaryCsField.value = this.value;
+});
+
+// Summary Table
+
+    const summaryFields = [
+        'summary_tp_1',    // Teaching Process
+        'summary_sf_1',    // Students' feedback
+        'summary_da_1',    // Departmental Activities
+        'summary_ia_1',    // Institute Activities
+        'summary_acr_1',   // ACR
+        'summary_cs_1'     // Contribution to Society
+    ];
+    
+    const totalField = document.querySelector('input[name="summary_total_1"]');
+    
+    function calculatefinal() {
+        let total = 0;
+        
+        summaryFields.forEach(fieldName => {
+            const field = document.querySelector(`input[name="${fieldName}"]`);
+            const value = parseFloat(field.value) || 0;
+            total += value;
+        });
+        
+        totalField.value = total.toFixed(2);
+    
+     // Update the 10-point scale automatically
+        const scaleField = document.querySelector('input[name="summary_scale_1"]');
+        if (scaleField) {
+            scaleField.value = (total / 10).toFixed(2);
+        }
+    }
+    
+    // Add event listeners to all summary fields
+    summaryFields.forEach(fieldName => {
+        const field = document.querySelector(`input[name="${fieldName}"]`);
+        field.addEventListener('input', calculatefinal);
+    });
+        
+});
+
+document.getElementById('printBtn').addEventListener('click', function() {
+    // Get the form element
+    var form = document.getElementById('myForm');
+    
+    // Check if form is valid
+    if (form.checkValidity()) {
+        // If valid, trigger print
+        window.print();
+    } else {
+        // If not valid, show an alert or error message
+        alert("Please fill out all required fields before printing.");
+    }
+});
