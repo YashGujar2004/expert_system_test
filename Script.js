@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    // Function to populate subject dropdown based on selected department
+    // Function to populate subject dropdown
     function populateSubjects(departmentSelect, subjectSelect, subjectCodeInput) {
         const department = departmentSelect.value;
         subjectSelect.innerHTML = '<option value="">Select Subject</option>';
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Function to set subject code based on selected subject
+    // Function to set subject code 
     function setSubjectCode(departmentSelect, subjectSelect, subjectCodeInput) {
         const department = departmentSelect.value;
         const subject = subjectSelect.value;
@@ -131,7 +131,7 @@ for (let i = 1; i <= 2; i++) {
 // Teaching Process table
 
     const teachingProcessTable = document.getElementById('teaching-process-table');
-    // Attach the event listener to the table for inputs in both rows
+    
     teachingProcessTable.addEventListener('input', calculateTeachingPoints);
 
     function calculateTeachingPoints() {
@@ -198,7 +198,7 @@ for (let i = 1; i <= 2; i++) {
 // Student Feedback Table
 
     const studentFeedbackTable = document.getElementById('student-feedback-table');
-    // Attach the event listener to the table for inputs in both rows
+ 
     studentFeedbackTable.addEventListener('input', calculateStudentPoints);
 
     function calculateStudentPoints() {
@@ -271,7 +271,7 @@ const activityCreditPoints = {
     }
 };
 
-// Event listener for department domain 1
+// Event listener for department activity 1
 document.getElementById('deptDomain1').addEventListener('change', function() {
     const selectedDomain = this.value;
     const activitySelect = document.getElementById('deptActivity1');
@@ -279,7 +279,6 @@ document.getElementById('deptDomain1').addEventListener('change', function() {
     // Clear previous activity options
     activitySelect.innerHTML = '<option value="">Select Activity</option>';
     
-    // Get the activities for the selected domain
     const activities = activityCreditPoints[selectedDomain];
     
     // Populate the activity select dropdown
@@ -298,12 +297,11 @@ document.getElementById('deptActivity1').addEventListener('change', function() {
     const selectedDomain = document.getElementById('deptDomain1').value;
     const selectedActivity = this.value;
     
-    // Get the credit points for the selected activity
     const creditPoints = activityCreditPoints[selectedDomain][selectedActivity] || 0;
 
     // Assign credit points to the corresponding input field
     document.querySelector('input[name="deptCreditPoint1"]').value = creditPoints;
-    calculateDeptPoints(); // Recalculate department points after assignment
+    calculateDeptPoints(); 
 });
 
 // Repeat for deptDomain2 and deptActivity2
@@ -331,10 +329,9 @@ document.getElementById('deptActivity2').addEventListener('change', function() {
     const creditPoints = activityCreditPoints[selectedDomain][selectedActivity] || 0;
 
     document.querySelector('input[name="deptCreditPoint2"]').value = creditPoints;
-    calculateDeptPoints(); // Recalculate department points after assignment
+    calculateDeptPoints(); 
 });
 
-// Similarly, implement for institute activities if necessary
 
 //Institute Activities
 const domainActivities = {
@@ -428,7 +425,6 @@ function calculateInstPoints() {
     let averageCredits = totalCredits / 2;
 
     document.querySelector('input[name="instCreditPoint"]').value = averageCredits.toFixed(2);
-    // Update the summary table with the calculated average
     document.querySelector('input[name="summary_ia_1"]').value = averageCredits.toFixed(2);
 }
 
@@ -451,7 +447,7 @@ function calculateInstPoints() {
         let passedRow2 = document.querySelector('input[name="studentsPassed2"]').value;
         let result2 = document.querySelector('.resultPercentage2');
 
-        // Calculate points for Row 1 if data is valid
+        // Calculate points for Row 1 
         if (passedRow1 && registedRow1) {
             let percentage1 = (passedRow1 / registedRow1) * 100;
             let points11 = calculaterespoints(percentage1);
@@ -459,10 +455,10 @@ function calculateInstPoints() {
             result1.textContent = percentage1.toFixed(2);
             validRows2++;
         } else {
-            result1.textContent = ''; // Clear if invalid input
+            result1.textContent = ''; 
         }
 
-        // Calculate points for Row 2 if data is valid
+        // Calculate points for Row 2 
         if (passedRow2 && registedRow2) {
             let percentage2 = (passedRow2 / registedRow2) * 100;
             let points22 = calculaterespoints(percentage2);
@@ -470,7 +466,7 @@ function calculateInstPoints() {
             result2.textContent = percentage2.toFixed(2);
             validRows2++;
         } else {
-            result2.textContent = ''; // Clear if invalid input  
+            result2.textContent = '';   
         }
 
         // Calculate and display average weightage
@@ -497,16 +493,12 @@ function calculateInstPoints() {
             return 0;
         }
     }
-
-// Research Table
-
 // Contribution To Society Table
 
 const contibutionTable = document.querySelector('input[name="cs_credit_point"]');
 const summaryCsField = document.querySelector('input[name="summary_cs_1"]');
 
 contibutionTable.addEventListener('input', function() {
-    // Update the summary table's contribution to society field
     summaryCsField.value = this.value;
 });
 
@@ -541,7 +533,7 @@ contibutionTable.addEventListener('input', function() {
         }
     }
     
-    // Add event listeners to all summary fields
+    // Event listeners to all summary fields
     summaryFields.forEach(fieldName => {
         const field = document.querySelector(`input[name="${fieldName}"]`);
         field.addEventListener('input', calculatefinal);
@@ -550,15 +542,11 @@ contibutionTable.addEventListener('input', function() {
 });
 
 document.getElementById('printBtn').addEventListener('click', function() {
-    // Get the form element
     var form = document.getElementById('myForm');
     
-    // Check if form is valid
     if (form.checkValidity()) {
-        // If valid, trigger print
         window.print();
     } else {
-        // If not valid, show an alert or error message
         alert("Please fill out all required fields before printing.");
     }
 });
