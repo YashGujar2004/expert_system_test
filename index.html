@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> APPRAISAL AND 360° FEEDBACK FORM </title>
-    <link rel="stylesheet" href="myCss.css">
+    <link rel="stylesheet" href="Css.css">
     <script src="Script.js" defer></script>
 </head>
 <body>
@@ -24,7 +24,10 @@
     </div>
     <div class="form-group">
         <label for="designation">Designation <span class="required">*</span></label>
-        <input type="text" id="designation" name="designation" required>
+        <select id="designation" name="designation" required>
+            <option>Selection Designation</option>
+            <option>Teacher</option>
+        </select>
     </div>
     <div class="form-group">
         <label for="department">Department <span class="required">*</span></label>
@@ -46,7 +49,16 @@
 
     <div class="form-group">
         <label for="academicYear">Academic Year <span class="required">*</span></label>
-        <input type="number" id="academicYear" name="academicYear" required>
+        <select name="department" id="department" required>
+            <option >Select Academic Year</option>
+            <option >2018-2019</option>
+            <option >2019-2020</option>
+            <option >2020-2021</option>
+            <option >2021-2022</option>
+            <option >2022-2023</option>
+            <option >2023-2024</option>
+            <option >2024-2025</option>
+        </select>
     </div>
 </div>
  <br>
@@ -84,9 +96,9 @@
             <select name="subjectName1" id="subjectName1" required>
                 <option value="">Select Subject</option>
             </select></td>
-            <td><input type="text" name="subjectCode1" readonly required></td>
-            <td><input type="number" name="scheduledClasses1" required></td>
-            <td><input type="number" name="heldClasses1" required></td>
+            <td><input type="text" name="subjectCode1" readonly required></td> 
+            <td><input type="number" name="scheduledClasses1" min="0" pattern="[0-9]+(\.[0-9]+)?" required></td> 
+            <td><input type="number" name="heldClasses1" min="0" pattern="[0-9]+(\.[0-9]+)?" required></td>
             <td class ="pointsEarned1"></td>
             <td><input type="text" name="documentIndex1"></td>
         </tr>
@@ -111,8 +123,8 @@
                 </select>
             </td>
             <td><input type="text" name="subjectCode2" readonly required></td>
-            <td><input type="number" name="scheduledClasses2"required></td>
-            <td><input type="number" name="heldClasses2"required></td>
+            <td><input type="number" name="scheduledClasses2" min="0" pattern="[0-9]+(\.[0-9]+)?" required></td>
+            <td><input type="number" name="heldClasses2" min="0" pattern="[0-9]+(\.[0-9]+)?" required></td>
             <td id = "pointsEarned2" ></td>
             <td><input type="text" name="documentIndex2"></td>
         </tr>
@@ -120,7 +132,7 @@
 
     <div class="form-group">
         <label for="teachingAverage">Average Weightage out of 20 Points:</label>
-        <input type="number" name="teachingAverage" > 
+        <input type="number" name="teachingAverage" readonly required > 
         <!--<min="0" max="20" step="0.1" required>--> 
     </div>
 
@@ -145,7 +157,7 @@
                 <td><input type="text" name="feedbackSemester1" readonly required></td>
                 <td><input type="text" name="feedbackSubjectName1" readonly required></td>
                 <td><input type="text" name="feedbackSubjectCode1" readonly required></td>
-                <td><input type="number" name="feedbackAverage1" min="0" max="20" required></td>
+                <td><input type="number" name="feedbackAverage1" min="0" max="20" pattern="[0-9]+(\.[0-9]+)?" required></td>  <!--user to fill between 1 & 20-->
                 <td><input type="text" name="feedbackDocumentIndex1"></td>
             </tr>
             <tr>
@@ -153,13 +165,13 @@
                 <td><input type="text" name="feedbackSemester2"readonly required></td>
                 <td><input type="text" name="feedbackSubjectName2"readonly required></td>
                 <td><input type="text" name="feedbackSubjectCode2"readonly required></td>
-                <td><input type="number" name="feedbackAverage2" min="0" max="20" required></td>
+                <td><input type="number" name="feedbackAverage2" min="0" max="20" pattern="[0-9]+(\.[0-9]+)?" required></td>
                 <td><input type="text" name="feedbackDocumentIndex2"></td>
             </tr>
     </table>
     <div class="form-group">
         <label for="feedbackAverage">Average Weightage out of 20 Points:</label>
-        <input type="number" name="feedbackAverage">
+        <input type="number" name="feedbackAverage" readonly>
     </div>
 </div>
 <br>
@@ -197,8 +209,8 @@
                             <option value="">Select Activity</option>
                         </select>
                     </td>    
-                <td><input type="number" name="deptCreditPoint1"required></td>
-                <td><input type="text" name="deptCriteria1" min="0" max="10" ></td>
+                <td><input type="number" name="deptCreditPoint1" readonly required></td>
+                <td><input type="text" name="deptCriteria1"></td>
                 <td><input type="text" name="deptDocumentIndex1"></td>
             </tr>
             <tr>
@@ -217,83 +229,83 @@
                             <option value="">Select Activity</option>
                         </select>
                     </td>
-                <td><input type="number" name="deptCreditPoint2" min="0" max="10" required></td>
+                <td><input type="number" name="deptCreditPoint2" readonly required></td>
                 <td><input type="text" name="deptCriteria2"></td>
                 <td><input type="text" name="deptDocumentIndex2"></td>
             </tr>
         </table>
         <div class="form-group">
             <label for="deptCreditPoint">Average Weightage out of 20 Points:</label>
-            <input type="number" name="deptCreditPoint">
+            <input type="number" name="deptCreditPoint" readonly>
         </div>
     </div>
 <br>
 <br>
-    <div class="form-border" >
-        <div class="section-header">D. Institute Activities (Max Credit 10)</div>
-        <p><em>Note: 5 Credit point for each semester</em></p>
+<div class="form-border" >
+    <div class="section-header">D. Institute Activities (Max Credit 10)</div>
+    <p><em>Note: 5 Credit point for each semester</em></p>
 
-    <table id="inst-activity-table">
-            <tr>
-                <th>S. No.</th>
-                <th>Semester <span class="required">*</span></th>
-                <th>Activity <span class="required">*</span></th>
-                <th>Credit Point <span class="required">*</span></th>
-                <th>Criteria</th>
-                <th>Supporting Document Index No.</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td><input type="text" name="instSemester1" readonly required></td>
-                <td>
-                    <select id="instActivity1" name="instActivity1">
-                    <option value="">Select Activity</option>
-                    <option value="NCC/NSS activities involvement">NCC/NSS activities involvement</option>
-                    <option value="Swachh Bharat Mission">Swachh Bharat Mission</option>
-                    <option value="Blood Donation Programmes">Blood Donation Programmes</option>
-                    <option value="Medical/Health Camp Organization">Medical/Health Camp Organization</option>
-                    <option value="Conduct of Yoga Classes">Conduct of Yoga Classes</option>
-                    <option value="Unnat Bharat Abhiyan">Unnat Bharat Abhiyan</option>
-                    <option value="Nation Building Activities">Nation Building Activities</option>
-                    <option value="Women Empowerment Programmes">Women Empowerment Programmes</option>
-                    <option value="Donations">Donations</option>
-                    <option value="Tree Plantation">Tree Plantation</option>
-                        <option value="Technical education Awareness">Technical education Awareness</option>
-                        <option value="Any other activity">Any other activity</option>
-                    </select></td>
-                <td><input type="number" name="instCreditPoint1" min="0" max="10" required></td>
-                <td><input type="text" name="instCriteria1"></td>
-                <td><input type="text" name="instDocumentIndex1"></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><input type="text" name="instSemester2"readonly required></td>
-                <td>
-                    <select id="instActivity2" name="instActivity2">
-                    <option value="">Select Activity</option>
-                    <option value="NCC/NSS activities involvement">NCC/NSS activities involvement</option>
-                    <option value="Swachh Bharat Mission">Swachh Bharat Mission</option>
-                    <option value="Blood Donation Programmes">Blood Donation Programmes</option>
-                    <option value="Medical/Health Camp Organization">Medical/Health Camp Organization</option>
-                    <option value="Conduct of Yoga Classes">Conduct of Yoga Classes</option>
-                    <option value="Unnat Bharat Abhiyan">Unnat Bharat Abhiyan</option>
-                    <option value="Nation Building Activities">Nation Building Activities</option>
-                    <option value="Women Empowerment Programmes">Women Empowerment Programmes</option>
-                    <option value="Donations">Donations</option>
-                    <option value="Tree Plantation">Tree Plantation</option>
+<table id="inst-activity-table">
+        <tr>
+            <th>S. No.</th>
+            <th>Semester <span class="required">*</span></th>
+            <th>Activity <span class="required">*</span></th>
+            <th>Credit Point <span class="required">*</span></th>
+            <th>Criteria</th>
+            <th>Supporting Document Index No.</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><input type="text" name="instSemester1" readonly required></td>
+            <td>
+                <select id="instActivity1" name="instActivity1">
+                <option value="">Select Activity</option>
+                <option value="NCC/NSS activities involvement">NCC/NSS activities involvement</option>
+                <option value="Swachh Bharat Mission">Swachh Bharat Mission</option>
+                <option value="Blood Donation Programmes">Blood Donation Programmes</option>
+                <option value="Medical/Health Camp Organization">Medical/Health Camp Organization</option>
+                <option value="Conduct of Yoga Classes">Conduct of Yoga Classes</option>
+                <option value="Unnat Bharat Abhiyan">Unnat Bharat Abhiyan</option>
+                <option value="Nation Building Activities">Nation Building Activities</option>
+                <option value="Women Empowerment Programmes">Women Empowerment Programmes</option>
+                <option value="Donations">Donations</option>
+                <option value="Tree Plantation">Tree Plantation</option>
                     <option value="Technical education Awareness">Technical education Awareness</option>
                     <option value="Any other activity">Any other activity</option>
-                    </select></td>
-                <td><input type="number" name="instCreditPoint2" min="0" max="10" required></td>
-                <td><input type="text" name="instCriteria2" ></td>
-                <td><input type="text" name="instDocumentIndex2"></td>
-            </tr>
-        </table>
-        <div class="form-group"></div>
-            <label for="instCreditPoint">Average Weightage out of 10 Points:</label>
-            <input type="number" name="instCreditPoint">
-        </div>
+                </select></td>
+            <td><input type="number" name="instCreditPoint1" readonly required></td>
+            <td><input type="text" name="instCriteria1"></td>
+            <td><input type="text" name="instDocumentIndex1"></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><input type="text" name="instSemester2"readonly required></td>
+            <td>
+                <select id="instActivity2" name="instActivity2">
+                <option value="">Select Activity</option>
+                <option value="NCC/NSS activities involvement">NCC/NSS activities involvement</option>
+                <option value="Swachh Bharat Mission">Swachh Bharat Mission</option>
+                <option value="Blood Donation Programmes">Blood Donation Programmes</option>
+                <option value="Medical/Health Camp Organization">Medical/Health Camp Organization</option>
+                <option value="Conduct of Yoga Classes">Conduct of Yoga Classes</option>
+                <option value="Unnat Bharat Abhiyan">Unnat Bharat Abhiyan</option>
+                <option value="Nation Building Activities">Nation Building Activities</option>
+                <option value="Women Empowerment Programmes">Women Empowerment Programmes</option>
+                <option value="Donations">Donations</option>
+                <option value="Tree Plantation">Tree Plantation</option>
+                <option value="Technical education Awareness">Technical education Awareness</option>
+                <option value="Any other activity">Any other activity</option>
+                </select></td>
+            <td><input type="number" name="instCreditPoint2" readonly required></td>
+            <td><input type="text" name="instCriteria2" ></td>
+            <td><input type="text" name="instDocumentIndex2"></td>
+        </tr>
+    </table>
+    <div class="form-group"></div>
+        <label for="instCreditPoint">Average Weightage out of 10 Points:</label>
+        <input type="number" name="instCreditPoint">
     </div>
+</div>
     <br>
     <br>
 
@@ -397,7 +409,7 @@
 
         <div class="form-group">
             <label for="averageResult">Average Weightage out of 20 Points:</label>
-            <input type="number" name="averageResult" > 
+            <input type="number" name="averageResult" readonly> 
         </div>
         <div class="section-header">F. Contribution to Society (Max Credit 10)</div>
         <br>
@@ -417,9 +429,9 @@
                 <td>1</td>
                 <td><input type="text" name="cs_semester"required></td>
                 <td><input type="text" name="cs_activity"required></td>
-                <td><input type="text" name="cs_credit_point"required></td>
+                <td><input type="text" name="cs_credit_point" min="0" required></td>
                 <td><input type="text" name="cs_criteria"></td>
-                <td><input type="text" name="cs_enclosure_no"></td>
+                <td><input type="text" name="cs_enclosure_no"></td> 
             </tr>
         </tbody>
     </table>
@@ -438,48 +450,48 @@
         <tbody>
             <tr>
                 <td>A. Teaching Process (Max Points 20)</td>
-                <td><input type="number" name="summary_tp_1"></td>
+                <td><input type="number" name="summary_tp_1" min="0" required></td>
                
             </tr>
             <tr>
                 <td>B. Students' feedback (Max Points 20)</td>
-                <td><input type="number" name="summary_sf_1"></td>
+                <td><input type="number" name="summary_sf_1" min="0" required></td>
                 <!-- <td><input type="text" name="summary_sf_2"></td>
                 <td><input type="text" name="summary_sf_3"></td> -->
             </tr>
             <tr>
                 <td>C. Departmental Activities (Max Points 20)</td>
-                <td><input type="number" name="summary_da_1"></td>
+                <td><input type="number" name="summary_da_1" min="0" required></td>
                 <!-- <td><input type="text" name="summary_da_2"></td>
                 <td><input type="text" name="summary_da_3"></td> -->
             </tr>
             <tr>
                 <td>D. Institute Activities (Max Points 10)</td>
-                <td><input type="number" name="summary_ia_1"></td>
+                <td><input type="number" name="summary_ia_1" min="0" required></td>
                 <!-- <td><input type="text" name="summary_ia_2"></td>
                 <td><input type="text" name="summary_ia_3"></td> -->
             </tr>
             <tr>
                 <td>E. ACR (Max Points 20)</td>
-                <td><input type="number" name="summary_acr_1"></td>
+                <td><input type="number" name="summary_acr_1" min="0" required></td>
                 <!-- <td><input type="text" name="summary_acr_2"></td>
                 <td><input type="text" name="summary_acr_3"></td> -->
             </tr>
             <tr>
                 <td>F. Contribution to Society (Max Points 10)</td>
-                <td><input type="number" name="summary_cs_1"></td>
+                <td><input type="number" name="summary_cs_1" min="0" required></td>
                 <!-- <td><input type="text" name="summary_cs_2"></td>
                 <td><input type="text" name="summary_cs_3"></td> -->
             </tr>
             <tr>
                 <td>Total (Max Points 100)</td>
-                <td><input type="number" name="summary_total_1"></td>
+                <td><input type="number" name="summary_total_1" min="0" required></td>
                 <!-- <td><input type="text" name="summary_total_2"></td>
                 <td><input type="text" name="summary_total_3"></td> -->
             </tr>
             <tr>
                 <td>Total on 10 Point scale</td>
-                <td><input type="number" name="summary_scale_1"></td>
+                <td><input type="number" name="summary_scale_1" min="0" required></td>
                 <!-- <td><input type="text" name="summary_scale_2"></td>
                 <td><input type="text" name="summary_scale_3"></td> -->
             </tr>
