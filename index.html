@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> APPRAISAL AND 360° FEEDBACK FORM </title>
     <link rel="stylesheet" href="Css.css">
-    <script src="Script.js" defer></script>
+    <script src="n.js" defer></script>
 </head>
 <body>
 <form  id="myForm">
@@ -49,7 +49,7 @@
 
     <div class="form-group">
         <label for="academicYear">Academic Year <span class="required">*</span></label>
-        <select name="department" id="department" required>
+        <select name="academicYear" id="academicYear" required>
             <option >Select Academic Year</option>
             <option >2018-2019</option>
             <option >2019-2020</option>
@@ -429,7 +429,7 @@
                 <td>1</td>
                 <td><input type="text" name="cs_semester"required></td>
                 <td><input type="text" name="cs_activity"required></td>
-                <td><input type="text" name="cs_credit_point" min="0" required></td>
+                <td><input type="number" name="cs_credit_point" min="0" required></td>
                 <td><input type="text" name="cs_criteria"></td>
                 <td><input type="text" name="cs_enclosure_no"></td> 
             </tr>
