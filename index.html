@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> APPRAISAL AND 360° FEEDBACK FORM </title>
     <link rel="stylesheet" href="Css.css">
-    <script src="n.js" defer></script>
+    <script src="Script.js" defer></script>
+    <script src="formback.js" defer></script>
 </head>
 <body>
 <form  id="myForm">
@@ -16,7 +17,7 @@
     <div class="form-border">
     <h1 id="hello">APPRAISAL AND 360° FEEDBACK FORM</h1>
     <br>
-    <div class="section-header">SECTION A</div>
+    <div class="section-header">General Information</div>
     <br>
     <div class="form-group">
         <label for="name">Name <span class="required">*</span></label>
@@ -310,7 +311,7 @@
     <br>
 
     <div class="form-border">
-        <div class="section-header">E. ACR maintained at institute level (Max Credit 20)</div>
+        <div class="section-header">E. <abbr title="Annual Confidential Report">ACR </abbr> maintained at institute level (Max Credit 20)</div>
         
         <h3>Result (Max 10 Credit Point)</h3>
     <table>
@@ -450,30 +451,30 @@
         <tbody>
             <tr>
                 <td>A. Teaching Process (Max Points 20)</td>
-                <td><input type="number" name="summary_tp_1" min="0" required></td>
+                <td><input type="number" name="summary_tp_1" min="0" readonly required></td>
                
             </tr>
             <tr>
                 <td>B. Students' feedback (Max Points 20)</td>
-                <td><input type="number" name="summary_sf_1" min="0" required></td>
+                <td><input type="number" name="summary_sf_1" min="0" readonly required></td>
                 <!-- <td><input type="text" name="summary_sf_2"></td>
                 <td><input type="text" name="summary_sf_3"></td> -->
             </tr>
             <tr>
                 <td>C. Departmental Activities (Max Points 20)</td>
-                <td><input type="number" name="summary_da_1" min="0" required></td>
+                <td><input type="number" name="summary_da_1" min="0" readonly required></td>
                 <!-- <td><input type="text" name="summary_da_2"></td>
                 <td><input type="text" name="summary_da_3"></td> -->
             </tr>
             <tr>
                 <td>D. Institute Activities (Max Points 10)</td>
-                <td><input type="number" name="summary_ia_1" min="0" required></td>
+                <td><input type="number" name="summary_ia_1" min="0" readonly required></td>
                 <!-- <td><input type="text" name="summary_ia_2"></td>
                 <td><input type="text" name="summary_ia_3"></td> -->
             </tr>
             <tr>
                 <td>E. ACR (Max Points 20)</td>
-                <td><input type="number" name="summary_acr_1" min="0" required></td>
+                <td><input type="number" name="summary_acr_1" min="0" readonly required></td>
                 <!-- <td><input type="text" name="summary_acr_2"></td>
                 <td><input type="text" name="summary_acr_3"></td> -->
             </tr>
@@ -485,19 +486,19 @@
             </tr>
             <tr>
                 <td>Total (Max Points 100)</td>
-                <td><input type="number" name="summary_total_1" min="0" required></td>
+                <td><input type="number" name="summary_total_1" min="0" readonly required></td>
                 <!-- <td><input type="text" name="summary_total_2"></td>
                 <td><input type="text" name="summary_total_3"></td> -->
             </tr>
             <tr>
                 <td>Total on 10 Point scale</td>
-                <td><input type="number" name="summary_scale_1" min="0" required></td>
+                <td><input type="number" name="summary_scale_1" min="0" readonly required></td>
                 <!-- <td><input type="text" name="summary_scale_2"></td>
                 <td><input type="text" name="summary_scale_3"></td> -->
             </tr>
         </tbody>
     </table>
-        <button type="submit" id="printBtn">Submit Appraisal Form</button>
+        <button type="submit" id="submitBtn">Submit Appraisal Form</button>
 </form>
     </div>
 </body>
