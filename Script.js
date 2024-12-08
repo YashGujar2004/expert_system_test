@@ -207,6 +207,7 @@ for (let i = 1; i <= 2; i++) {
 
         // Row 2
         let feedbackRow2 = document.querySelector('input[name="feedbackAverage2"]').value;
+        
         let num1 = parseFloat(feedbackRow1) || 0;
         let num2 = parseFloat(feedbackRow2) || 0;
 
@@ -409,6 +410,7 @@ document.querySelector('select[name="instActivity1"]').addEventListener('change'
 document.querySelector('select[name="instActivity2"]').addEventListener('change', function() {
     const selectedActivity = this.value;
     const creditPoints = instituteActivityCreditPoints[selectedActivity] || 0;
+    console.log("Selected activity: ", selectedActivity, " | Assigned credit: ", creditPoints);
     document.querySelector('input[name="instCreditPoint2"]').value = creditPoints;
     calculateInstPoints();
 });
@@ -475,7 +477,6 @@ function calculateInstPoints() {
         let avgWeightage = validRows2 > 0 ? (totalPoints2 / validRows2) : 0;
         avgWeightageInput.value = Math.round(avgWeightage.toFixed(2));
         document.querySelector('input[name="summary_acr_1"]').value = avgWeightage.toFixed(2);
-
     }
     // Function to calculate points based on percentage
     function calculaterespoints(percentage) {
@@ -495,12 +496,12 @@ function calculateInstPoints() {
     }
 // Contribution To Society Table
 
-const contibutionTable = document.querySelector('input[name="cs_credit_point"]');
-const summaryCsField = document.querySelector('input[name="summary_cs_1"]');
+// const contibutionTable = document.querySelector('input[name="cs_credit_point"]');
+// const summaryCsField = document.querySelector('input[name="summary_cs_1"]');
 
-contibutionTable.addEventListener('input', function() {
-    summaryCsField.value = this.value;
-});
+// contibutionTable.addEventListener('input', function() {
+//     summaryCsField.value = parseFloat(this.value).toFixed(2);
+// });
 
 // Summary Table
 
@@ -510,7 +511,7 @@ contibutionTable.addEventListener('input', function() {
         'summary_da_1',    // Departmental Activities
         'summary_ia_1',    // Institute Activities
         'summary_acr_1',   // ACR
-        'summary_cs_1'     // Contribution to Society
+        //'summary_cs_1'     // Contribution to Society
     ];
     
     const totalField = document.querySelector('input[name="summary_total_1"]');
@@ -528,8 +529,8 @@ contibutionTable.addEventListener('input', function() {
     
      // Update the 10-point scale automatically
         const scaleField = document.querySelector('input[name="summary_scale_1"]');
-        if (scaleField) {
-            scaleField.value = (total / 10).toFixed(2);
+       if (scaleField) {
+        scaleField.value = (total / 10).toFixed(2);
         }
     }
     
