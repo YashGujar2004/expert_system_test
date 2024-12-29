@@ -498,7 +498,6 @@ function calculateInstPoints() {
 
 // const contibutionTable = document.querySelector('input[name="cs_credit_point"]');
 // const summaryCsField = document.querySelector('input[name="summary_cs_1"]');
-
 // contibutionTable.addEventListener('input', function() {
 //     summaryCsField.value = parseFloat(this.value).toFixed(2);
 // });
@@ -511,7 +510,7 @@ function calculateInstPoints() {
         'summary_da_1',    // Departmental Activities
         'summary_ia_1',    // Institute Activities
         'summary_acr_1',   // ACR
-        //'summary_cs_1'     // Contribution to Society
+        'summary_cs_1'     // Contribution to Society
     ];
     
     const totalField = document.querySelector('input[name="summary_total_1"]');
