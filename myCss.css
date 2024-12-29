@@ -3,7 +3,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 200px;
-    background-color: #F5F5F5   ;
+    background-color: #F5F5F5;
 }
  #hello{
     text-align: left;
@@ -50,14 +50,13 @@ body {
         background-color: 0D92F4;
         color: white;
         padding: 10px;
-        margin-top: 20px;
-        
+        margin-top: 20px;        
     }
     .form-border{
         border:2px solid rgb(192, 188, 188);
         border-radius: 10px;
-        margin: 0 auto;
-        padding: 20px;
+        margin: auto;
+        padding: 30px;
         background-color: white;
         overflow-x: auto;
     }
@@ -208,5 +207,4 @@ body {
         border-radius: 5px;
         width: 100%;
     }
-    
-  
+
