@@ -208,8 +208,8 @@ for (let i = 1; i <= 2; i++) {
         // Row 2
         let feedbackRow2 = document.querySelector('input[name="feedbackAverage2"]').value;
         
-        let num1 = parseFloat(feedbackRow1) || 0;
-        let num2 = parseFloat(feedbackRow2) || 0;
+        let num1 = parseFloat(feedbackRow1) || 0.0;
+        let num2 = parseFloat(feedbackRow2) || 0.0;
 
         // Calculate and display average weightage
         let avgWeightageInput = document.querySelector('input[name="feedbackAverage"]');
@@ -230,8 +230,8 @@ for (let i = 1; i <= 2; i++) {
 
         let deptActyRow1 = document.querySelector('input[name="deptCreditPoint1"]').value;
         let deptActyRow2 = document.querySelector('input[name="deptCreditPoint2"]').value;
-        let num1 = parseFloat(deptActyRow1) ||0;
-        let num2 = parseFloat(deptActyRow2) ||0;
+        let num1 = parseFloat(deptActyRow1) ||0.0;
+        let num2 = parseFloat(deptActyRow2) ||0.0;
 
         // Calculate and display average weightage
         let avgWeightageInput = document.querySelector('input[name="deptCreditPoint"]');
@@ -420,8 +420,8 @@ function calculateInstPoints() {
     let instCredRow1 = document.querySelector('input[name="instCreditPoint1"]').value;
     let instCredRow2 = document.querySelector('input[name="instCreditPoint2"]').value;
 
-    let mynum1 = parseFloat(instCredRow1) || 0;
-    let mynum2 = parseFloat(instCredRow2) || 0;
+    let mynum1 = parseFloat(instCredRow1) || 0.0;
+    let mynum2 = parseFloat(instCredRow2) || 0.0;
 
     let totalCredits = mynum1 + mynum2;
     let averageCredits = totalCredits / 2;
@@ -521,7 +521,7 @@ function calculateInstPoints() {
         
         summaryFields.forEach(fieldName => {
             const field = document.querySelector(`input[name="${fieldName}"]`);
-            const value = parseFloat(field.value) || 0;
+            const value = parseFloat(field.value) || 0.0;
             total += value;
         });
         
